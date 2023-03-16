@@ -21,5 +21,3 @@ inputIntoSA(scores);
 ```
 
 The script will only overwrite scores with higher scores.
-
-It currently does not work with some songs, such as POSSESSION(EDP Live Mix) or the X-Special songs, because they have different names on Skill Attack and on Flower/Eagle.

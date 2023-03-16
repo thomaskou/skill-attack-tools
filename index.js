@@ -28,7 +28,8 @@ async function parseKailua(baseurl, id) {
         console.log(`Loading page ${page}...`);
         const { pageScores, hasNext } = await parseKailuaPage(baseurl, id, page);
         pageScores.forEach(({ song, style, diff, score, lamp }) => {
-            scores[[song, style, diff]] = { song, style, diff, score, lamp };
+            const nameStripped = song.replace(/\s/g, '');
+            scores[[nameStripped, style, diff]] = { song, style, diff, score, lamp };
         });
         if (!hasNext) break;
         page += 1;
@@ -64,8 +65,9 @@ function inputIntoSA(scores) {
                 [9, "DP", "EXPERT"],
                 [10, "DP", "CHALLENGE"],
             ].forEach(([i, style, diff]) => {
-                if ([song, style, diff] in scores) {
-                    const entry = scores[[song, style, diff]];
+                const nameStripped = song.replace(/\s/g, '');
+                if ([nameStripped, style, diff] in scores) {
+                    const entry = scores[[nameStripped, style, diff]];
                     const existing = tr.children[i].innerText;
                     if (existing === "-\n" || parseInt(existing) < entry.score) {
                         console.log(`Overwriting ${song}, ${style}, ${diff}...`);
