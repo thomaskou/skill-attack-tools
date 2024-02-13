@@ -1,7 +1,7 @@
 # skill-attack-tools
 
 **Update 2024-02-12:**
-* The script now automatically sends all of your scores at once to Skill Attack, without the user having to go multiple pages.
+* The script now automatically sends all of your scores at once to Skill Attack, without the user having to go to multiple pages.
 * Scraping scores from Flower/Eagle is now much faster, since it loads 10 pages at once instead of one at a time.
 * Now supports importing scores from Sanbai.
 
