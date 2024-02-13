@@ -25,7 +25,7 @@
 ## Submitting scores to Skill Attack
 
 1. In **Skill Attack**, navigate to your profile's score matrix page (access by clicking *Score* in the top right of your profile).
-2. In the developer console, type `const password = ` followed by your Skill Attack password **in quotation marks**.
+2. In the developer console, type `const password = ` followed by your Skill Attack password **in quotation marks**, then hit *Enter*.
 3. Open the developer console and type `const scores = `, paste the scores you copied from one of the previous steps, then hit *Enter*.
 ![image](https://github.com/thomaskou/skill-attack-tools/assets/25218060/2b388fe1-34b4-4cc9-8d48-7b8e003d501e)
 4. Copy everything from here: https://raw.githubusercontent.com/thomaskou/skill-attack-tools/master/skillattack.js
