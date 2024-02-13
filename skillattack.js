@@ -59,3 +59,5 @@ async function submitToSA(newScores, password, options = {}) {
         console.log("Your scores have been submitted!");
     }
 }
+
+await submitToSA(scores, password);
