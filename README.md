@@ -3,7 +3,7 @@
 **Update 2024-02-12:**
 * The script now automatically sends all of your scores at once to Skill Attack, without the user having to go to multiple pages.
 * Scraping scores from Flower/Eagle is now much faster, since it loads 10 pages at once instead of one at a time.
-* Now supports importing scores from Sanbai.
+* Now supports importing scores from Sanbai, so you can merge all of your best scores together from both official and unofficial servers.
 
 ## Copying scores from Sanbai
 
