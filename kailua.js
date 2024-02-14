@@ -1,5 +1,9 @@
 const MAX_JOBS = 10;
 
+function stripName(name) {
+    return name.replace(/\s/g, '').replace(/＋/g, '+');
+}
+
 async function parseKailuaPage(baseurl, id, page) {
     console.log(`Loading page ${page}...`);
     const url = `${baseurl}/game/ddr/${id}?page=${page}`;
@@ -14,7 +18,7 @@ async function parseKailuaPage(baseurl, id, page) {
                 song: tr.children[1].children[0].children[0].innerText,
                 style: diff[1],
                 diff: diff[2],
-                score: parseInt(tr.children[3].children[0].innerText.replace(/,/g, '')),
+                score: parseInt(stripName(tr.children[3].children[0].innerText)),
                 lamp: tr.children[5].children[0]?.title,
             };
         });
@@ -33,7 +37,7 @@ async function getKailuaScores() {
         }
         const results = await Promise.all(jobs);
         results.flat(1).forEach(({ song, style, diff, score, lamp }) => {
-            const nameStripped = song.replace(/\s/g, '');
+            const nameStripped = stripName(song);
             scores[[nameStripped, style, diff]] = { song, style, diff, score, lamp };
         });
     }

@@ -11,6 +11,10 @@ const SANBAI_DIFFICULTIES = [
 ];
 const SANBAI_LAMPS = [null, null, "EXTRA CLEAR", "GOOD FULL COMBO", "GREAT FULL COMBO", "PERFECT FULL COMBO", "MARVELOUS FULL COMBO"];
 
+function stripName(name) {
+    return name.replace(/\s/g, '').replace(/＋/g, '+');
+}
+
 // Must be called from any Sanbai page while logged in
 async function getSanbaiScores() {
     let songMapping = {};
@@ -21,7 +25,7 @@ async function getSanbaiScores() {
     SCORE_DATA.forEach((score) => {
         const song = songMapping[score["song_id"]];
         const [style, diff] = SANBAI_DIFFICULTIES[score["difficulty"]];
-        const nameStripped = song.replace(/\s/g, '');
+        const nameStripped = stripName(song);
         scores[[nameStripped, style, diff]] = {song, style, diff, score: score["score"], lamp: SANBAI_LAMPS[score["lamp"]]};
     });
     return scores;

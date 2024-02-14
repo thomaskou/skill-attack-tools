@@ -10,18 +10,22 @@ const SA_SCORE_MATRIX_COLUMNS = [
     [10, "DP", "CHALLENGE", "cdp"],
 ];
 
+function stripName(name) {
+    return name.replace(/\s/g, '').replace(/＋/g, '+');
+}
+
 // Must be called from the player's SA score matrix page
 async function submitToSA(newScores, password, options = {}) {
     const id = (new URLSearchParams(window.location.search)).get("ddrcode");
     let totalPayload = `_=score_submit&ddrcode=${id}&password=${password}`;
     Array.from(document.getElementById("score").getElementsByTagName("tr")).slice(2).forEach((tr) => {
         const name = tr.children[1].innerText;
-        const nameStripped = name.replace(/\s/g, '');
+        const nameStripped = stripName(name);
         let hasUpdate = false;
         let payload = `&index[]=${tr.children[0].innerText}`;
         SA_SCORE_MATRIX_COLUMNS.forEach(([column, style, diff, saFormKey]) => {
             payload += `&${saFormKey}[]=`;
-            const existingScoreStr = tr.children[column].innerText.replace(/,/g, '');
+            const existingScoreStr = stripName(tr.children[column].innerText);
             if ([nameStripped, style, diff] in newScores) {
                 const newEntry = newScores[[nameStripped, style, diff]];
                 const existingScore = existingScoreStr === "-" ? 0 : parseInt(existingScoreStr);

@@ -1,3 +1,7 @@
+function stripName(name) {
+    return name.replace(/\s/g, '').replace(/＋/g, '+');
+}
+
 function mergeDicts(scoreDicts) {
     let scores = {};
     scoreDicts.forEach(scoreDict => {
