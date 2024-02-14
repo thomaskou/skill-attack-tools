@@ -18,7 +18,7 @@ async function parseKailuaPage(baseurl, id, page) {
                 song: tr.children[1].children[0].children[0].innerText,
                 style: diff[1],
                 diff: diff[2],
-                score: parseInt(stripName(tr.children[3].children[0].innerText)),
+                score: parseInt(tr.children[3].children[0].innerText.replace(/,/g, '')),
                 lamp: tr.children[5].children[0]?.title,
             };
         });

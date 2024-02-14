@@ -25,7 +25,7 @@ async function submitToSA(newScores, password, options = {}) {
         let payload = `&index[]=${tr.children[0].innerText}`;
         SA_SCORE_MATRIX_COLUMNS.forEach(([column, style, diff, saFormKey]) => {
             payload += `&${saFormKey}[]=`;
-            const existingScoreStr = stripName(tr.children[column].innerText);
+            const existingScoreStr = tr.children[column].innerText.replace(/,/g, '');
             if ([nameStripped, style, diff] in newScores) {
                 const newEntry = newScores[[nameStripped, style, diff]];
                 const existingScore = existingScoreStr === "-" ? 0 : parseInt(existingScoreStr);
