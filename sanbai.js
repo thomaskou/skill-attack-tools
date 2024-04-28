@@ -12,7 +12,10 @@ const SANBAI_DIFFICULTIES = [
 const SANBAI_LAMPS = [null, null, "EXTRA CLEAR", "GOOD FULL COMBO", "GREAT FULL COMBO", "PERFECT FULL COMBO", "MARVELOUS FULL COMBO"];
 
 function stripName(name) {
-    return name.replace(/\s/g, '').replace(/＋/g, '+');
+    return name.replace(/\s/g, '')
+        .replace(/＋/g, '+')
+        .replace(/！/g, '!')
+        .replace(/\u200b/g, '');
 }
 
 // Must be called from any Sanbai page while logged in

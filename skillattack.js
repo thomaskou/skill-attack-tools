@@ -11,7 +11,10 @@ const SA_SCORE_MATRIX_COLUMNS = [
 ];
 
 function stripName(name) {
-    return name.replace(/\s/g, '').replace(/＋/g, '+');
+    return name.replace(/\s/g, '')
+        .replace(/＋/g, '+')
+        .replace(/！/g, '!')
+        .replace(/\u200b/g, '');
 }
 
 // Must be called from the player's SA score matrix page

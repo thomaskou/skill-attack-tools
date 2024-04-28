@@ -1,7 +1,10 @@
 const MAX_JOBS = 10;
 
 function stripName(name) {
-    return name.replace(/\s/g, '').replace(/＋/g, '+');
+    return name.replace(/\s/g, '')
+        .replace(/＋/g, '+')
+        .replace(/！/g, '!')
+        .replace(/\u200b/g, '');
 }
 
 async function parseKailuaPage(baseurl, id, page) {

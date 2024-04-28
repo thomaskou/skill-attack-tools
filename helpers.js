@@ -1,5 +1,8 @@
 function stripName(name) {
-    return name.replace(/\s/g, '').replace(/＋/g, '+');
+    return name.replace(/\s/g, '')
+        .replace(/＋/g, '+')
+        .replace(/！/g, '!')
+        .replace(/\u200b/g, '');
 }
 
 function mergeDicts(scoreDicts) {
